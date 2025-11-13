@@ -2,7 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import connextDB from './config/db.js';
 import cookieParser from 'cookie-parser';
-import userRouter from './routes/userRoutes.js';
+import authRouter from './routes/authRoutes.js';
 import cors from 'cors';
 dotenv.config();
 
@@ -16,7 +16,7 @@ app.use(cors({
 }));
 app.use(express.json());
 app.use(cookieParser());
-app.use("/api/auth", userRouter);
+app.use("/api/auth", authRouter);
 
 
 app.get("/", (req, res)=>{
