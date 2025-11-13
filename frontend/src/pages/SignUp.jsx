@@ -38,7 +38,7 @@ function SignUp() {
       setLoading(false)
     } catch (error) {
       setErr(error?.response?.data?.message)
-       setLoading(true)
+       setLoading(false)
     }
   };
 

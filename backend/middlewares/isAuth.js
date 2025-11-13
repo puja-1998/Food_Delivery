@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
-import React from 'react'
+import dotenv from 'dotenv';
+dotenv.config()
 
 const isAuth = async (req, res, next) => {
   try {

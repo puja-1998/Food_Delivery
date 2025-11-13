@@ -3,12 +3,13 @@ import SignUp from './pages/SignUp';
 import SignIn from './pages/SignIn';
 import SignOut from './pages/SignOut';
 import ForgotPassword from './pages/ForgotPassword';
+import useGetCurrentUser from './hooks/useGetCurrentUser';
 
 export const serverUrl = "http://localhost:8000"
 
 function App() {
   
-
+useGetCurrentUser()
   return (
     <Routes>
       <Route path='/signup' element={<SignUp />}/>
