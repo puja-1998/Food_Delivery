@@ -3,7 +3,7 @@ import Nav from './Nav'
 
 function OwnerDashboard() {
   return (
-    <div className='flex items-center justify-center'>
+    <div className='w-full min-h-screen bg-[#fff9f6] flex flex-col items-center '>
         <Nav/>
     </div>
   )
