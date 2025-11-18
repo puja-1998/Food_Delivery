@@ -12,6 +12,7 @@ import { TbReceipt2 } from "react-icons/tb";
 
 function Nav() {
   const { userData, city } = useSelector((state) => state.user);
+  const { myShopData } = useSelector((state) => state.owner);
   const [showInfo, setShowInfo] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const dispatch = useDispatch();
@@ -81,45 +82,50 @@ function Nav() {
           ))}
 
         {/* if user is owner */}
-        {userData.role == "owner" ? 
-          (<>
-            <button className="hidden md:flex items-center gap-1 p-2 cursor-pointer rounded-full bg-[#ff4d2d]/10 text-[#ff4d2d]">
-              <FaPlus size={20} />
-              <span>Add Food Item</span>
-            </button>
+        {userData.role == "owner" ? (
+          <>
+            {myShopData && (
+              <>
+                <button className="hidden md:flex items-center gap-1 p-2 cursor-pointer rounded-full bg-[#ff4d2d]/10 text-[#ff4d2d]">
+                  <FaPlus size={20} />
+                  <span>Add Food Item</span>
+                </button>
 
-             <button className="md:hidden flex items-center p-2 cursor-pointer rounded-full bg-[#ff4d2d]/10 text-[#ff4d2d]">
-              <FaPlus size={20} />
-            </button> 
-
-              {/*for small devices */}
+                <button className="md:hidden flex items-center p-2 cursor-pointer rounded-full bg-[#ff4d2d]/10 text-[#ff4d2d]">
+                  <FaPlus size={20} />
+                </button>
+              </>
+            )}
+            {/*for small devices */}
             <div className=" hidden md:flex items-center gap-2 cursor-pointer relative px-3 py-1 rounded-lg bg-[#ff4d2d]/10 text-[#ff4d2d] font-medium">
-              <TbReceipt2  size={20}/>
+              <TbReceipt2 size={20} />
               <span>My Orders</span>
-              <span className="absolute -right-2 -top-2 text-xs font-bold text-white bg-[#ff4d2d] rounded-full px-[6px] py-[1px ]">0</span>
+              <span className="absolute -right-2 -top-2 text-xs font-bold text-white bg-[#ff4d2d] rounded-full px-[6px] py-[1px ]">
+                0
+              </span>
             </div>
             {/*for large devices */}
             <div className=" md:hidden flex items-center gap-2 cursor-pointer relative px-3 py-1 rounded-lg bg-[#ff4d2d]/10 text-[#ff4d2d] font-medium">
-              <TbReceipt2  size={20}/>
-              <span className="absolute -right-2 -top-2 text-xs font-bold text-white bg-[#ff4d2d] rounded-full px-[6px] py-[1px ]">0</span>
+              <TbReceipt2 size={20} />
+              <span className="absolute -right-2 -top-2 text-xs font-bold text-white bg-[#ff4d2d] rounded-full px-[6px] py-[1px ]">
+                0
+              </span>
             </div>
-          </>)
-        : 
-         (<><div className="relative cursor-pointer">
-            <FiShoppingCart size={25} className=" text-[#ff4d2d]" />
-            <span className="absolute right-[-9px] top-[-12px] text-[#ff4d2d]">
-              0
-            </span>
-          </div>
-        
+          </>
+        ) : (
+          <>
+            <div className="relative cursor-pointer">
+              <FiShoppingCart size={25} className=" text-[#ff4d2d]" />
+              <span className="absolute right-[-9px] top-[-12px] text-[#ff4d2d]">
+                0
+              </span>
+            </div>
 
-        
-        <button className="hidden md:block px-3 py-1  rounded-lg bg-[#ff4d2d]/10 text-[#ff4d2d] text-sm font-semibold">
-          My Orders
-        </button></>)
-          
-         }
-        
+            <button className="hidden md:block px-3 py-1  rounded-lg bg-[#ff4d2d]/10 text-[#ff4d2d] text-sm font-semibold">
+              My Orders
+            </button>
+          </>
+        )}
 
         {/* Profile */}
         <div
