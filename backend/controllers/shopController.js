@@ -25,7 +25,7 @@ export const createEditShop = async (req, res) => {
         },{new:true})
     }
 
-    await shop.populate("owner");
+    await shop.populate("owner items");
 
     return res.status(201).json(shop);
   } catch (error) {
@@ -37,12 +37,18 @@ export const createEditShop = async (req, res) => {
 // get shop
 export const getMyShop = async (req, res) => {
   try {
-    const shop = await Shop.findOne({owner:req.userId}).populate("owner Items")
+    const shop = await Shop.findOne({owner:req.userId}).populate("owner items")
 
     if(!shop){
       return null
     }
     return res.status(200).json(shop);
+
+    //  return res.status(200).json({
+    //   success: true,
+    //   shop: shop || null
+    // });
+
   } catch (error) {
     return res.status(500).json({ message: `get my shop error ${error}` });
   }
