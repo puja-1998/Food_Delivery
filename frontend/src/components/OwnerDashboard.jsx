@@ -9,7 +9,7 @@ function OwnerDashboard() {
   const {myShopData} = useSelector(state=>state.owner)
   const navigate = useNavigate()
   return (
-    <div className='w-full  min-h-screen bg-[#fff9f6] flex flex-col items-center '>
+    <div className='w-full min-h-screen bg-[#fff9f6] flex flex-col items-center overflow-x-hidden'>
         <Nav/>
         {!myShopData && <div className='flex justify-center items-center p-4 sm:p-6'>
             <div className='w-full max-w-md bg-white shadow-lg rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition-shadow duration-300'>

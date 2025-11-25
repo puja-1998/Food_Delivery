@@ -21,9 +21,12 @@ export const addItem = async (req, res) => {
       image,
       shop: shop._id,
     });
-
+    shop.items.push(item._id)
+    await shop.save()
+    await shop.populate("items owner")
     return res.status(201).json(shop);
   } catch (error) {
+    console.log("ADD ITEM ERROR:", error);
     return res.status(500).json({ message: `add item error ${error}` });
   }
 };
@@ -55,6 +58,7 @@ export const editItem = async (req, res) => {
 
     return res.status(200).json(item);
   } catch (error) {
+    console.log("EDIT ITEM ERROR:", error);
     return res.status(500).json({ message: `Edit item error ${error}` });
   }
 };
